@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PixelShrink | Local Compressor</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="app-card">
+      <header>
+        <h1>PixelShrink <span>v2.0</span></h1>
+        <p>Compress & Convert Images Locally.</p>
+      </header>
+
+      <div
+        class="upload-area"
+        onclick="document.getElementById('fileIn').click()"
+      >
+        <input
+          type="file"
+          id="fileIn"
+          accept="image/png, image/jpeg, image/jpg"
+          hidden
+        />
+        <i class="fas fa-cloud-upload-alt"></i>
+        <p>Click to Upload Image (PNG/JPG)</p>
+      </div>
+
+      <div class="controls disabled" id="controls">
+        <div class="settings-group">
+          <label>Quality: <span id="q-val">80%</span></label>
+          <input type="range" id="quality" min="1" max="100" value="80" />
+        </div>
+
+        <div class="settings-group">
+          <label>Format</label>
+          <select id="format">
+            <option value="image/webp">WebP (Best)</option>
+            <option value="image/jpeg">JPEG (Standard)</option>
+            <option value="image/png">PNG (Lossless)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-box">
+          <small>ORIGINAL SIZE</small>
+          <h3 id="orig-size">0 KB</h3>
+        </div>
+        <div class="arrow">➝</div>
+        <div class="stat-box highlight">
+          <small>NEW SIZE</small>
+          <h3 id="new-size">0 KB</h3>
+          <div class="badge" id="savings">0% Saved</div>
+        </div>
+      </div>
+
+      <button id="downloadBtn" disabled>DOWNLOAD COMPRESSED IMAGE</button>
+
+      <canvas id="processCanvas"></canvas>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
